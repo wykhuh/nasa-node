@@ -23,21 +23,30 @@
     // });
 
     var getData = function() {
+      vm.temperatures = [];
+      vm.latest_alerts = [];
+
       $http.get('/api/temperatures').success(function(result) {
+        var curTemp = result[0].temperaturereading._;
+
         if(result.length > 0) {
-          if(vm.temperatures.length > 5) {
-            vm.temperatures.pop();
+          // if(vm.temperatures.length > 10) {
+          //   vm.temperatures.pop();
+          // }
+
+          if (curTemp > tempSettings) {
+            vm.latest_alerts.push(
+              { text: 'Too hot! Current temperature is '
+                + result[0].temperaturereading._  + ', your threshold is ' + tempSettings }
+              )
           }
+
           angular.forEach(result, function(x) {
-            vm.latest_alerts = [];
 
             var currentTemp = x.temperaturereading._;
             if(currentTemp > tempSettings) {
               console.log('too hot', tempSettings, x.temperaturereading._)
-              vm.latest_alerts.push(
-                { text: 'Too hot! Current temperature is '
-                 + currentTemp + ', your threshold is ' + tempSettings }
-               )
+
             };
 
             vm.temperatures.push({
@@ -53,7 +62,7 @@
     }
 
     getData();
-    $interval(getData, 5000);
+    // $interval(getData, 5000);
 
   }
 })();

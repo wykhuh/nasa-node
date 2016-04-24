@@ -60,7 +60,8 @@ app.get('/api/temperatures', function(req, res) {
     .where('PartitionKey eq ?', deviceId);
 
   tableSvc.queryEntities(storageTable, query, null, function(err, result, response) {
-    res.json(result.entries.slice(-1));
+    console.log(result.entries.slice(-10))
+    res.json(result.entries.slice(-10));
   })
 })
 
