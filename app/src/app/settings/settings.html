@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div>
+    <acme-navbar></acme-navbar>
+  </div>
+
+  <h1>Settings</h1>
+
+  <form>
+    <label for="temperature">Temperature</label>
+    <input id='temperature'  ng-model="settings.temp" type="text">
+
+    <!-- <label for="sound">Sound</label>
+    <input id='sound' ng-model="settings.sound" type="text">
+     -->
+    <input type="submit" ng-click="settings.setValues()">
+  </form>
+
+</div>

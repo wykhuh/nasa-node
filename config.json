@@ -1,0 +1,10 @@
+{
+    "port": "3000",
+    "eventHubName": "nasa2016-wyk-event",
+    "ehConnString": "Endpoint=sb://nasa2016-wyk-event-ns.servicebus.windows.net/;SharedAccessKeyName=readwrite;SharedAccessKey=vCcClTqzyWkPwtB53ryf3u+dV6w/Lg1rRySgYD4Moi8=;EntityPath=nasa2016-wyk-event",
+    "deviceId": "edison-nasa2016",
+    "iotHubConnString": "HostName=nasa2016-iot-wyk.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=HN+6CtjAtF5f7DFqnOMD35qgmMFnj74+nHVbfOcTcIE=",
+    "storageAcountName": "nasa2016storage",
+    "storageAccountKey": "cOkUwa/ROpg8XvIi6xWeQyXrN7C6sm1fcwQRucsOTWGCUHJA8ktKhA3sXabpHT9ECv56DyNWUSoBPhJt7283PQ==",
+    "storageTable": "TemperatureRecords"
+}

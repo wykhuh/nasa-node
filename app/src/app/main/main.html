@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div>
+    <acme-navbar></acme-navbar>
+  </div>
+
+  <div class="row">
+      <div class="col-md-4">
+          <h2>Current Temperature</h2> The last recorded reading on device {{ main.latest_reading.deviceid }} was:
+          <table>
+              <thead>
+                  <tr>
+                      <th>Temperature</th>
+                      <th>Time</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>{{ main.latest_reading.temperature | number }}&deg;C</td><td>{{ main.latest_reading.eventtime | date : 'medium' }}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="col-md-4" style="overflow-wrap:break-word">
+          <h2>Alerts</h2>
+
+          <pre ng-repeat="alert in main.latest_alerts">{{ alert.text }}</pre>
+          <br />
+
+      </div>
+      <div class="col-md-4">
+          <h2>Temperature History</h2>
+          <div ng-show="main.temperatures.length > 0">
+              <h4>Most recent {{ main.temperatures.length }} readings </h4>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Temperature</th>
+                      <th>Time</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="t in main.temperatures">
+                      <td>{{ t.temperature | number }}&deg;C</td><td>{{ t.eventtime | date : 'medium' }}</td>
+                  </tr>
+              </tbody>
+          </table>
+          <div ng-show="main.temperatures.length === 0">
+              No temperature history found
+          </div>
+      </div>
+  </div>
+</div>
